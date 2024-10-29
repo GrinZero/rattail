@@ -1,4 +1,14 @@
 import { defineConfig } from 'vitepress'
+import { generalItems, numberItems, stringItems } from './items'
+
+function withI18n(items: { link: string; text: string }[], locale: 'zh') {
+  return items.map((item) => {
+    return {
+      ...item,
+      link: `/${locale}${item.link}`,
+    }
+  })
+}
 
 export default defineConfig({
   title: 'Rattail',
@@ -23,9 +33,22 @@ export default defineConfig({
           },
           {
             text: '通用',
-            items: [{ text: 'isString', link: '/zh/general/is-string' }],
+            items: withI18n(generalItems, 'zh'),
+          },
+          {
+            text: '数字',
+            items: withI18n(numberItems, 'zh'),
+          },
+          {
+            text: '字符串',
+            items: withI18n(stringItems, 'zh'),
           },
         ],
+
+        docFooter: {
+          prev: '上一篇',
+          next: '下一篇',
+        },
 
         socialLinks: [{ icon: 'github', link: 'https://github.com/varletjs/rattail' }],
       },
@@ -48,7 +71,15 @@ export default defineConfig({
       },
       {
         text: 'General',
-        items: [{ text: 'isString', link: '/general/is-string' }],
+        items: generalItems,
+      },
+      {
+        text: 'Number',
+        items: numberItems,
+      },
+      {
+        text: 'String',
+        items: stringItems,
       },
     ],
 

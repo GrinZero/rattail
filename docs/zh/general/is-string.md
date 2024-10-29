@@ -7,8 +7,8 @@
 ```ts
 import { isString } from 'rattail'
 
-console.log(isString('rattail')) // return true
-console.log(isString(123)) // return false
+isString('rattail') // return true
+isString(123) // return false
 ```
 
 ### 参数列表
